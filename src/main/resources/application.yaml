@@ -1,0 +1,26 @@
+resilience4j.circuitbreaker:
+    configs:
+        default:
+            registerHealthIndicator: false
+            slidingWindowSize: 10
+            minimumNumberOfCalls: 5
+            permittedNumberOfCallsInHalfOpenState: 3
+            automaticTransitionFromOpenToHalfOpenEnabled: true
+            waitDurationInOpenState: 2s
+            failureRateThreshold: 50
+            eventConsumerBufferSize: 10
+        shared:
+            registerHealthIndicator: true
+            slidingWindowSize: 100
+            permittedNumberOfCallsInHalfOpenState: 30
+            waitDurationInOpenState: 1s
+            failureRateThreshold: 50
+            eventConsumerBufferSize: 10
+    instances:
+        basic:
+            baseConfig: default
+ 
+
+
+management.endpoints.web.exposure.include:
+    - "*"
